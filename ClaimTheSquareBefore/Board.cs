@@ -1,4 +1,4 @@
-namespace ClaimTheSquare;
+namespace ClaimTheSquareBefore;
 
 public class Board
 {
@@ -18,6 +18,15 @@ public class Board
         }
     }
 
+    public void ClaimSquare()
+    {
+        Console.WriteLine();
+        var index = ReadSquareIndex();
+        var square = _squares[index];
+
+        square.Claim();
+    }
+
     public void Show()
     {
         for (var row = 0; row < Height; row++)
@@ -32,60 +41,20 @@ public class Board
         }
     }
 
-    public ClaimResult ClaimSquare(
-        int index,
-        string text,
-        GameColor foreColor,
-        GameColor backColor)
+    private static int ReadSquareIndex()
     {
-        if (index < 0 || index >= _squares.Length)
+        while (true)
         {
-            return new ClaimResult(false, "Ugyldig rute.");
-        }
+            Console.Write("Velg rute fra 0 til 63: ");
+            var input = Console.ReadLine();
 
-        return _squares[index].Claim(text, foreColor, backColor);
-    }
-
-    public List<TextObjectDto> ToDtos()
-    {
-        var textObjects = new List<TextObjectDto>();
-
-        foreach (var square in _squares)
-        {
-            if (!square.IsEmpty())
+            var isNumber = int.TryParse(input, out var index);
+            if (isNumber && index is >= 0 and < SquareCount)
             {
-                textObjects.Add(square.ToDto());
-            }
-        }
-
-        return textObjects;
-    }
-
-    public void LoadFrom(List<TextObjectDto> textObjects)
-    {
-        var hasMessage = false;
-
-        foreach (var textObject in textObjects)
-        {
-            if (textObject.Index < 0 || textObject.Index >= _squares.Length)
-            {
-                Console.WriteLine($"Hopper over rute {textObject.Index}: ugyldig indeks.");
-                hasMessage = true;
-                continue;
+                return index;
             }
 
-            var errorMessage = _squares[textObject.Index].LoadFromDto(textObject);
-            if (errorMessage != null)
-            {
-                Console.WriteLine($"Hopper over rute {textObject.Index}: {errorMessage}");
-                hasMessage = true;
-            }
-        }
-
-        if (hasMessage)
-        {
-            Console.Write("Trykk Enter for å fortsette...");
-            Console.ReadLine();
+            Console.WriteLine("Ugyldig rute. Skriv et tall fra 0 til 63.");
         }
     }
 }

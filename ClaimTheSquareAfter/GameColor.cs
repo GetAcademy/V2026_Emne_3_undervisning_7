@@ -1,4 +1,4 @@
-namespace ClaimTheSquareBefore;
+namespace ClaimTheSquareAfter;
 
 public class GameColor
 {

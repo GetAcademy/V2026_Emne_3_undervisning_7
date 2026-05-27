@@ -1,4 +1,4 @@
-namespace ClaimTheSquare;
+namespace ClaimTheSquareBefore;
 
 public class Square
 {
@@ -17,75 +17,48 @@ public class Square
         return _text == null;
     }
 
-    public ClaimResult Claim(string text, GameColor foreColor, GameColor backColor)
+    public void Claim()
     {
-        if (string.IsNullOrWhiteSpace(text))
-        {
-            return new ClaimResult(false, "Teksten kan ikke være tom.");
-        }
+        var text = ReadText();
+
+        Console.WriteLine();
+        Console.WriteLine("Velg forgrunnsfarge:");
+        var foreColor = ColorMenu.ReadColor();
+
+        Console.WriteLine();
+        Console.WriteLine("Velg bakgrunnsfarge:");
+        var backColor = ColorMenu.ReadColor();
+
+        Console.WriteLine();
 
         if (IsEmpty())
         {
             _text = text;
             _foreColor = foreColor;
             _backColor = backColor;
-            return new ClaimResult(true, null);
+            Console.WriteLine("Ruten ble tatt.");
+            Pause();
+            return;
         }
 
         if (text != _text)
         {
-            return new ClaimResult(false, "Ruten er allerede tatt. Du må skrive nøyaktig samme tekst for å kunne bytte farger.");
+            Console.WriteLine("Ruten er allerede tatt. Du maa skrive samme tekst for aa bytte farger.");
+            Pause();
+            return;
         }
 
         if (foreColor.Name != _backColor!.Name || backColor.Name != _foreColor!.Name)
         {
-            return new ClaimResult(false, "Fargene må være nøyaktig motsatt av før.");
+            Console.WriteLine("Fargene maa vaere motsatt av forrige valg.");
+            Pause();
+            return;
         }
 
         _foreColor = foreColor;
         _backColor = backColor;
-        return new ClaimResult(true, "");
-    }
-
-    public TextObjectDto ToDto()
-    {
-        return new TextObjectDto
-        {
-            Index = _index,
-            Text = _text!,
-            ForeColor = _foreColor!.Name,
-            BackColor = _backColor!.Name
-        };
-    }
-
-    public string? LoadFromDto(TextObjectDto textObject)
-    {
-        if (textObject.Index != _index)
-        {
-            return "DTO-en hører til en annen rute.";
-        }
-
-        if (string.IsNullOrWhiteSpace(textObject.Text))
-        {
-            return "tekst mangler.";
-        }
-
-        var foreColor = GameColor.Create(textObject.ForeColor);
-        if (foreColor == null)
-        {
-            return "forgrunnsfargen er ugyldig.";
-        }
-
-        var backColor = GameColor.Create(textObject.BackColor);
-        if (backColor == null)
-        {
-            return "bakgrunnsfargen er ugyldig.";
-        }
-
-        _text = textObject.Text;
-        _foreColor = foreColor;
-        _backColor = backColor;
-        return null;
+        Console.WriteLine("Fargene ble byttet.");
+        Pause();
     }
 
     public void Show()
@@ -109,7 +82,23 @@ public class Square
         Console.BackgroundColor = oldBackColor;
     }
 
-    private string ShortText(string text)
+    private static string ReadText()
+    {
+        while (true)
+        {
+            Console.Write("Tekst: ");
+            var text = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                return text;
+            }
+
+            Console.WriteLine("Teksten kan ikke vaere tom.");
+        }
+    }
+
+    private static string ShortText(string text)
     {
         if (text.Length <= 5)
         {
@@ -117,5 +106,12 @@ public class Square
         }
 
         return text.Substring(0, 5);
+    }
+
+    private static void Pause()
+    {
+        Console.WriteLine();
+        Console.Write("Trykk Enter for aa fortsette...");
+        Console.ReadLine();
     }
 }

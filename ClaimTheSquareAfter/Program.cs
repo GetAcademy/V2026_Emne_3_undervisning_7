@@ -1,4 +1,4 @@
-using ClaimTheSquareBefore;
+using ClaimTheSquareAfter;
 
 var app = new App();
 app.Run();

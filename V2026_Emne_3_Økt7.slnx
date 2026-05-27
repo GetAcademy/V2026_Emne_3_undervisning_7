@@ -3,4 +3,6 @@
     <File Path="plan.txt" />
   </Folder>
   <Project Path="ClaimTheSquareBefore/ClaimTheSquareBefore.csproj" />
+  <Project Path="ClaimTheSquareAfter/ClaimTheSquareAfter.csproj" />
+  <Project Path="ClaimTheSquareAfter.Tests/ClaimTheSquareAfter.Tests.csproj" />
 </Solution>
