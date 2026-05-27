@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Plan/">
+    <File Path="plan.txt" />
+  </Folder>
+  <Project Path="ClaimTheSquareBefore/ClaimTheSquareBefore.csproj" />
+</Solution>

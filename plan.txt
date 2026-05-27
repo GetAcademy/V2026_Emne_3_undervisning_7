@@ -1,0 +1,11 @@
+Økt 7 – torsdag 28. mai – Unit testing, testbar Claim the Square og egen listeklasse
+
+1: Nytt eksempel på innkapsling - lage egen fleksibel liste
+   Bygge enkel listeklasse rundt array, og koble dette til generics og List<T>
+
+2: Unit testing i C# med NUnit
+
+3: Hvorfor Console, filhåndtering og brukerinput gjør kode vanskeligere å teste
+   Skrive om Claim the Square til mer testbare klasser
+
+KI-tematikk: foreslå tester og peke ut kode som er vanskelig å teste, faktisk skrive og oppdatere tester for dere
