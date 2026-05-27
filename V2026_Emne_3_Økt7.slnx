@@ -1,8 +1,11 @@
 <Solution>
+  <Folder Name="/1_Before/">
+    <Project Path="ClaimTheSquareBefore/ClaimTheSquareBefore.csproj" />
+  </Folder>
+  <Folder Name="/2_After/" />
   <Folder Name="/Plan/">
     <File Path="plan.txt" />
   </Folder>
-  <Project Path="ClaimTheSquareBefore/ClaimTheSquareBefore.csproj" />
   <Project Path="ClaimTheSquareAfter/ClaimTheSquareAfter.csproj" />
   <Project Path="ClaimTheSquareAfter.Tests/ClaimTheSquareAfter.Tests.csproj" />
 </Solution>
