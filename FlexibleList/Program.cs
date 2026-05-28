@@ -1,13 +1,35 @@
 ﻿using FlexibleList;
 
-var list = new MyFlexibleList();
+var list = new List<ConsoleKey>();
 while (true)
 {
-    Console.Write("Skriv noe: ");
-    var text = Console.ReadLine();
-    list.Add(text);
-    list.Show();
+    Console.Write("Trykk en tast! ");
+    var keyInfo = Console.ReadKey();
+    Console.WriteLine();
+    list.Add(keyInfo.Key);
+    Console.WriteLine(string.Join(',',list));
 }
+
+//var list = new MyGenericFlexibleList<ConsoleKey>();
+//while (true)
+//{
+//    Console.Write("Trykk en tast! ");
+//    var keyInfo = Console.ReadKey();
+//    Console.WriteLine();
+//    list.Add(keyInfo.Key);
+//    list.Show();
+//}
+
+
+
+//var list = new MyFlexibleList();
+//while (true)
+//{
+//    Console.WriteLine("Trykk en tast!");
+//    var keyInfo = Console.ReadKey();
+//    list.Add(keyInfo.Key);
+//    list.Show();
+//}
 
 //var texts = new string[4];
 //int index = 0;
