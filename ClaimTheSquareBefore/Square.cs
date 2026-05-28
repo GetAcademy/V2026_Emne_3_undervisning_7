@@ -19,7 +19,8 @@ public class Square
 
     public void Claim()
     {
-        var text = ReadText();
+        Console.Write("Tekst: ");
+        var text = Console.ReadLine();
 
         Console.WriteLine();
         Console.WriteLine("Velg forgrunnsfarge:");
@@ -82,23 +83,7 @@ public class Square
         Console.BackgroundColor = oldBackColor;
     }
 
-    private static string ReadText()
-    {
-        while (true)
-        {
-            Console.Write("Tekst: ");
-            var text = Console.ReadLine();
-
-            if (!string.IsNullOrWhiteSpace(text))
-            {
-                return text;
-            }
-
-            Console.WriteLine("Teksten kan ikke vaere tom.");
-        }
-    }
-
-    private static string ShortText(string text)
+   private static string ShortText(string text)
     {
         if (text.Length <= 5)
         {
