@@ -3,7 +3,7 @@
 1: Nytt eksempel på innkapsling - lage egen fleksibel liste
    Bygge enkel listeklasse rundt array, og koble dette til generics og List<T>
 
-2: Unit testing i C# med NUnit
+2: Unit testing i C# med NUnit + hvordan IO kan gjøre testing vanskelig
 
 3: Hvorfor Console, filhåndtering og brukerinput gjør kode vanskeligere å teste
    Skrive om Claim the Square til mer testbare klasser
