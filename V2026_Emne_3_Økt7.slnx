@@ -2,7 +2,9 @@
   <Folder Name="/0_Plan/">
     <File Path="plan.txt" />
   </Folder>
-  <Folder Name="/1_FlexibleList/" />
+  <Folder Name="/1_FlexibleList/">
+    <Project Path="FlexibleList/FlexibleList.csproj" Id="ce5ee307-a16f-45ff-af2b-1daec0b2f32a" />
+  </Folder>
   <Folder Name="/2_Unit testing/" />
   <Folder Name="/3_ClaimTheSquareBefore/">
     <Project Path="ClaimTheSquareBefore/ClaimTheSquareBefore.csproj" />
