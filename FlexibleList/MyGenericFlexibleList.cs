@@ -1,6 +1,8 @@
-﻿namespace FlexibleList
+﻿using System.Text;
+
+namespace FlexibleList
 {
-    internal class MyGenericFlexibleList<T>
+    public class MyGenericFlexibleList<T>
     {
         private T[] _values;
         private int _index;
@@ -26,10 +28,31 @@
 
         public void Show()
         {
-            for (int i = 0; i < _index; i++)
+            for (var i = 0; i < _index; i++)
             {
                 Console.WriteLine($"På index {i} ligger verdien: {_values[i]}");
             }
         }
+
+        public string GetSummary()
+        {
+            var summary = new StringBuilder();
+            for (var i = 0; i < _index; i++)
+            {
+                summary.AppendLine($"På index {i} ligger verdien: {_values[i]}");
+            }
+            return summary.ToString();
+        }
+
+        //public string GetSummary()
+        //{
+        //    var summary = "";
+        //    for (int i = 0; i < _index; i++)
+        //    {
+        //        summary += $"På index {i} ligger verdien: {_values[i]}\n";
+        //    }
+
+        //    return summary;
+        //}
     }
 }
